@@ -1,6 +1,6 @@
 /*=============== Highlight Major ===============*/ 
 var typed = new Typed(".text", {
-	strings: ["A CS Senior at UT-Dallas","A Software Engineer", "A Cybersecurity Engineer"],
+	strings: ["CS Master's Student at UT Austin","A Software Engineer", "A Cybersecurity Engineer"],
 	typeSpeed: 90,
 	backSpeed: 90,
 	backDelay: 1000,

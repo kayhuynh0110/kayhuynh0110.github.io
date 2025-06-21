@@ -2,442 +2,2074 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Khoa Huynh Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/3b84d7aab4.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <title>Khoa Huynh | Cybersecurity Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Work Experience Timeline - Enhanced Readability */
+        #experience {
+            background: rgba(5, 5, 10, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 2rem;
+            margin: 2rem auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        #experience::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(57, 255, 20, 0.02) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        #experience .section-title {
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 0 20px var(--accent-cyan);
+            margin-bottom: 4rem;
+        }
+
+        .experience-timeline {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            z-index: 1;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--accent-cyan), var(--accent-purple), var(--accent-green));
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+        }
+
+        .experience-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 6rem;
+            position: relative;
+        }
+
+        .experience-item:nth-child(odd) {
+            flex-direction: row;
+        }
+
+        .experience-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        .experience-date {
+            flex: 0 0 220px;
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            margin-top: 1rem;
+        }
+
+        .date-badge {
+            display: block;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: var(--primary-bg);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+            text-shadow: none;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .date-range {
+            color: var(--accent-cyan);
+            font-size: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: 500;
+            text-shadow: 0 0 5px var(--accent-cyan);
+        }
+
+        .experience-content {
+            flex: 1;
+            background: rgba(17, 17, 24, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.4);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            margin: 0 3rem;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .experience-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-green));
+            border-radius: 1.5rem 1.5rem 0 0;
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        .experience-content:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(0, 255, 255, 0.3);
+            border-color: var(--accent-cyan);
+        }
+
+        .experience-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            padding-bottom: 1.5rem;
+        }
+
+        .experience-title {
+            font-family: 'Orbitron', monospace;
+            color: #ffffff;
+            font-size: 1.6rem;
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+            line-height: 1.3;
+        }
+
+        .experience-company {
+            color: var(--accent-purple);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin: 0;
+            font-family: 'Orbitron', monospace;
+            text-shadow: 0 0 8px rgba(157, 78, 221, 0.5);
+        }
+
+        .experience-description {
+            margin-bottom: 2rem;
+        }
+
+        .achievement-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+            padding: 1.2rem;
+            background: rgba(0, 255, 255, 0.08);
+            border-radius: 0.8rem;
+            border-left: 4px solid var(--accent-green);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .achievement-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, rgba(0, 255, 255, 0.1), transparent);
+            border-radius: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .achievement-item:hover::before {
+            opacity: 1;
+        }
+
+        .achievement-item:hover {
+            background: rgba(0, 255, 255, 0.12);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .achievement-item i {
+            color: var(--accent-green);
+            margin-top: 0.3rem;
+            flex-shrink: 0;
+            font-size: 1.1rem;
+            text-shadow: 0 0 5px var(--accent-green);
+        }
+
+        .achievement-item span {
+            color: #e8e8e8;
+            line-height: 1.6;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .achievement-item strong {
+            color: var(--accent-cyan);
+            font-weight: 700;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.6);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(157, 78, 221, 0.3);
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.3), rgba(157, 78, 221, 0.1));
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(157, 78, 221, 0.5);
+            font-family: 'Share Tech Mono', monospace;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-shadow: 0 0 3px rgba(157, 78, 221, 0.8);
+        }
+
+        .tech-tag:hover {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.5), rgba(157, 78, 221, 0.2));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(157, 78, 221, 0.3);
+        }
+
+        /* Enhanced separator between experience items */
+        .experience-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            bottom: -3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent-cyan), transparent);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Responsive Design for Experience */
+        @media (max-width: 768px) {
+            .experience-timeline::before {
+                left: 30px;
+            }
+
+            .experience-item {
+                flex-direction: column !important;
+                align-items: flex-start;
+                margin-bottom: 4rem;
+            }
+
+            .experience-item:nth-child(even) {
+                flex-direction: column !important;
+            }
+
+            .experience-date {
+                flex: none;
+                align-self: flex-start;
+                margin-left: 60px;
+                margin-bottom: 1.5rem;
+                text-align: left;
+            }
+
+            .experience-content {
+                margin: 0 0 0 60px;
+                width: calc(100% - 80px);
+                padding: 2rem;
+            }
+
+            .experience-title {
+                font-size: 1.4rem;
+            }
+
+            .experience-company {
+                font-size: 1.1rem;
+            }
+
+            .achievement-item {
+                padding: 1rem;
+                margin-bottom: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .experience-content {
+                margin-left: 40px;
+                width: calc(100% - 50px);
+                padding: 1.5rem;
+            }
+
+            .experience-date {
+                margin-left: 40px;
+            }
+
+            .experience-timeline::before {
+                left: 20px;
+            }
+        }
+
+        :root {
+            --primary-bg: #0a0a0f;
+            --secondary-bg: #111118;
+            --accent-cyan: #00ffff;
+            --accent-purple: #9d4edd;
+            --accent-green: #39ff14;
+            --accent-orange: #ff6b35;
+            --text-primary: #ffffff;
+            --text-secondary: #b8bcc8;
+            --border-glow: #00ffff;
+        }
+
+        body {
+            font-family: 'Share Tech Mono', monospace;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Matrix Rain Background */
+        .matrix-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+
+        .matrix-column {
+            position: absolute;
+            top: -100%;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 14px;
+            color: var(--accent-green);
+            animation: matrix-fall linear infinite;
+        }
+
+        @keyframes matrix-fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(10, 10, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 5px var(--accent-cyan);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(157, 78, 221, 0.1) 0%, rgba(10, 10, 15, 1) 70%);
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .hero-subtitle {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-family: 'Orbitron', monospace;
+        }
+
+        .hero-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            color: var(--text-primary);
+            text-decoration: none;
+            border-radius: 0.5rem;
+            font-family: 'Orbitron', monospace;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent-cyan);
+            color: var(--primary-bg);
+        }
+
+        /* Terminal */
+        .terminal {
+            background: rgba(17, 17, 24, 0.9);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+            animation: slideInRight 1s ease-out;
+        }
+
+        .terminal-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .terminal-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .btn-close { background: #ff5f56; }
+        .btn-minimize { background: #ffbd2e; }
+        .btn-maximize { background: #27ca3f; }
+
+        .terminal-title {
+            margin-left: 1rem;
+            color: var(--accent-cyan);
+            font-size: 0.9rem;
+        }
+
+        .terminal-content {
+            color: var(--accent-green);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .terminal-line {
+            margin-bottom: 0.5rem;
+        }
+
+        .terminal-prompt {
+            color: var(--accent-cyan);
+        }
+
+        .cursor {
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* Cyberpunk Image Styling */
+        .hero-image {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: slideInRight 1s ease-out;
+        }
+
+        .image-container {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            border-radius: 20px;
+            padding: 10px;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple), var(--accent-green), var(--accent-cyan));
+            background-size: 400% 400%;
+            animation: neonPulse 3s ease-in-out infinite;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.5),
+                0 0 60px rgba(157, 78, 221, 0.3),
+                0 0 90px rgba(57, 255, 20, 0.2);
+        }
+
+        .image-container::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 25px;
+            background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple), var(--accent-green), var(--accent-cyan));
+            background-size: 400% 400%;
+            animation: neonRotate 4s linear infinite;
+            z-index: -1;
+            filter: blur(12px);
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            object-fit: cover;
+            position: relative;
+            z-index: 2;
+            filter: contrast(1.1) brightness(1.05);
+            transition: all 0.3s ease;
+        }
+
+        .image-container:hover .profile-image {
+            filter: contrast(1.2) brightness(1.1) hue-rotate(10deg);
+        }
+
+        /* Hologram overlay effect */
+        .image-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(0, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            animation: hologramScan 2s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* Glitch overlay for image */
+        .glitch-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 20px;
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(255, 0, 255, 0.03) 2%, transparent 4%),
+                linear-gradient(90deg, transparent 95%, rgba(0, 255, 255, 0.03) 97%, transparent 100%);
+            animation: glitchOverlay 3s infinite;
+            pointer-events: none;
+            z-index: 4;
+        }
+
+        @keyframes neonPulse {
+            0%, 100% {
+                background-position: 0% 50%;
+                box-shadow: 
+                    0 0 20px rgba(0, 255, 255, 0.5),
+                    0 0 40px rgba(157, 78, 221, 0.3),
+                    0 0 60px rgba(57, 255, 20, 0.2);
+            }
+            50% {
+                background-position: 100% 50%;
+                box-shadow: 
+                    0 0 30px rgba(0, 255, 255, 0.8),
+                    0 0 60px rgba(157, 78, 221, 0.5),
+                    0 0 90px rgba(57, 255, 20, 0.3);
+            }
+        }
+
+        @keyframes neonRotate {
+            0% {
+                background-position: 0% 50%;
+                transform: rotate(0deg);
+            }
+            100% {
+                background-position: 100% 50%;
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes hologramScan {
+            0% {
+                transform: translateX(-100%) rotate(45deg);
+            }
+            100% {
+                transform: translateX(100%) rotate(45deg);
+            }
+        }
+
+        @keyframes glitchOverlay {
+            0%, 90%, 100% {
+                opacity: 0;
+            }
+            5%, 10% {
+                opacity: 1;
+                transform: translateX(2px);
+            }
+            15%, 20% {
+                opacity: 1;
+                transform: translateX(-2px);
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px var(--accent-cyan);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: rgba(17, 17, 24, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+            border-color: var(--accent-cyan);
+        }
+
+        .skill-title {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-purple);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background: rgba(0, 255, 255, 0.05);
+            border-radius: 0.5rem;
+        }
+
+        .skill-bar {
+            width: 60px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            border-radius: 2px;
+            animation: loadSkill 2s ease-out;
+        }
+
+        @keyframes loadSkill {
+            from { width: 0; }
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .project-card {
+            background: rgba(17, 17, 24, 0.8);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple), var(--accent-green));
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.3);
+        }
+
+        .project-header {
+            padding: 1.5rem;
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        .project-title {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .project-tech {
+            color: var(--accent-purple);
+            font-size: 0.9rem;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--accent-purple);
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            space-y: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(17, 17, 24, 0.6);
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--accent-cyan);
+        }
+
+        .contact-icon {
+            color: var(--accent-cyan);
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 50%;
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--accent-cyan);
+            color: var(--primary-bg);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .contact-form {
+            background: rgba(17, 17, 24, 0.8);
+            padding: 2rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-cyan);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .form-input,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+        }
+
+        /* Animations */
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            }
+            to {
+                text-shadow: 0 0 30px rgba(157, 78, 221, 0.8);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .image-container {
+                width: 380px;
+                height: 380px;
+            }
+        }
+
+        @media (max-width: 968px) {
+            .image-container {
+                width: 320px;
+                height: 320px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .image-container {
+                width: 280px;
+                height: 280px;
+                margin: 0 auto;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-container {
+                width: 240px;
+                height: 240px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+        }
+
+        .glitch {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 90%, 100% {
+                transform: translateX(0);
+            }
+            10% {
+                transform: translateX(-2px);
+            }
+            20% {
+                transform: translateX(2px);
+            }
+            30% {
+                transform: translateX(-1px);
+            }
+            40% {
+                transform: translateX(1px);
+            }
+        }
+
+        /* Resume Modal */
+        .resume-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .resume-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .resume-modal-content {
+            background: rgba(17, 17, 24, 0.98);
+            border: 2px solid var(--accent-cyan);
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 900px;
+            height: 85%;
+            position: relative;
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.5),
+                0 0 60px rgba(0, 255, 255, 0.2);
+            animation: slideInUp 0.4s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .resume-modal-header {
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-purple));
+            padding: 1.5rem;
+            border-radius: 1rem 1rem 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resume-modal-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-bg);
+            margin: 0;
+        }
+
+        .close-resume {
+            background: none;
+            border: none;
+            color: var(--primary-bg);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-resume:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .resume-viewer {
+            width: 100%;
+            height: calc(100% - 80px);
+            border: none;
+            border-radius: 0 0 1rem 1rem;
+            background: white;
+        }
+
+        .resume-actions {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .download-btn {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            color: var(--primary-bg);
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(57, 255, 20, 0.4);
+        }
+    </style>
 </head>
 <body>
-    <header class="header">
-        <img src="images/logo.png" class="logo">
-        <i class="fa-solid fa-bars" id="menu-icon"></i>
-        <nav class="container">
-            <ul id="sidemenu">
-                <a href="#home" class="active">Home</a>
-                <a href="#about">About</a>
-                <a href="#services">Services</a>
-                <a href="#portfolio">Projects</a>
-                <a href="#contact">Contact</a>
+    <!-- Matrix Rain Background -->
+    <div class="matrix-container" id="matrix"></div>
 
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">KAY.EXE</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">HOME</a></li>
+                <li><a href="#about" class="nav-link">ABOUT</a></li>
+                <li><a href="#experience" class="nav-link">EXPERIENCE</a></li>
+                <li><a href="#skills" class="nav-link">SKILLS</a></li>
+                <li><a href="#certifications" class="nav-link">CERTS</a></li>
+                <li><a href="#projects" class="nav-link">PROJECTS</a></li>
+                <li><a href="#contact" class="nav-link">CONTACT</a></li>
             </ul>
-         
-        </nav>
-    </header>
-    <!-- home selection design -->
-    <section class="home" id ="home">
-        <div class="home-content">
-            <h1>Hello, <span>I'm </span><br><span>Khoa Huynh</span></h1>
-            <h2>And I'm <span class="text"></span></h2>
-            <p style="font-size: 16px; margin-top: 20px;">With knowledge in and the ability to focus on Software Engineering/Cybersecurity,<br> I offer high-quality projects that result in exceptional work.<br><br></p>
-            <a href="#contact" class="btn-box">Let's Talk<br></a>
-            <div class="social-icons-top">
-                <a href="https://github.com/khoahuynh0110"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.facebook.com/Anhhkhoa0110"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://www.instagram.com/anhh._khoa/"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://www.linkedin.com/in/kayhuynh0110/"><i class="fa-brands fa-linkedin"></i></a>
-            </div>      
         </div>
-        <div class="home-img">
-            <img src ="images/background.png" alt="">
-        </div>
-        <div class="home-imgHover"></div>      
-    </section>
+    </nav>
 
-    <!-- -------------------about-------------- -->
-    <section class ="about" id="about">
-        <h2 class="heading">About <span>Me</span></h2>
-        <div class="about-img" alt="">
-            <img src="images/user.png">
-            <span class="circle-spin"></span>
-        </div>
-        <div class="about-content">
-            <h3>Software & Cybersecurity Engineer!</h3>
-            <p>I'm currently pursuing an online Master of Science in Computer Science at UT Austin, 
-                and I'm actively seeking an internship opportunity
-                 With a strong foundation in teamwork, I have experience collaborating in diverse environments. 
-                Proficient in C, C++, Java, AWS, and essential MS/software tools for software roles. 
-                My commitment to continuous learning ensures a positive impact on your team. 
-                If given the opportunity, I plan to understand my coworkers' strengths, 
-                contribute effectively to team and project goals, 
-                and quickly grasp company policies and procedures to add value to your organization.
-                I am excited about the prospect of bringing my skills and enthusiasm to contribute to your team.</p>
-                <div class="btn-box-btns">
-                    <a href="#" class="btn-box">Read More</a>
-                </div>
-        </div>
-    </section>
-    <!-- -------------------education-------------- -->
-    <section class="education" id="education">
-        <h2 class="heading">My<span> Journey</span></h2>
-        <div class="education-row">
-            <div class="education-column">
-                <h3 class="title">Education</h3>
-                <div class="education-box">
-                    <div class="education-content">
-                        <div class="content">
-                            <div class="year"><i class="fa-regular fa-calendar"></i>January 2025 - December 2026</div>
-                            <h3>The University of Texas at Austin - Master of Science in Computer Science (Online)</h3>
-                            <p>Currently pursuing an online M.S. in Computer Science focused on software systems, AI, and cybersecurity to further deepen my technical expertise and industry-readiness.</p>
-                        </div>
-                    </div>
-                    <div class="education-content">
-                        <div class="content">
-                            <div class="year"><i class="fa-regular fa-calendar"></i>2023-2024</div>
-                            <h3>The University of Texas at Dallas - Bachelor of Science in Computer Science</h3>
-                            <p>Phi Theta Kappa Academic Excellence Scholarship-Honor Society at University of Texas at Dallas - January 2023</p>
-                            <p>Comet Transfer Academic Excellence Scholarship - with GPA: 3.9</p>
-                        </div>
-                    </div>
-
-                    <div class="education-content">
-                        <div class="content">
-                            <div class="year"><i class="fa-regular fa-calendar"></i>2022</div>
-                            <h3>Dallas College - Associate of Science</h3>
-                            <p>State Farm STEM Scholarship - June 2022</p>
-                        </div>
-                    </div>
-
-                    <div class="education-content">
-                        <div class="content">
-                            <div class="year"><i class="fa-regular fa-calendar"></i>2020 - 2021</div>
-                            <h3>Portland Community College</h3>
-                            <p>Muller Scholarship - July 2021</p>
-                            <p>J.K.G. Scholarship - June 2020</p>
-                        </div>
-                    </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-subtitle">$ whoami</div>
+                <h1 class="hero-title glitch">KAY HUYNH</h1>
+                <p class="hero-description">
+                    Current Software Engineer & Cybersecurity Specialist at TickerTrends. MS in Computer Science at UT Austin (GPA 3.9). 
+                    Expert in full-stack development, API optimization, and cybersecurity hardening with proven results in production environments.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn">View My Work</a>
+                    <button onclick="openResumeModal()" class="btn">View Resume</button>
                 </div>
             </div>
-
-            <div class="education-column">
-                <h3 class="title">Certification</h3>
-                <div class="education-box">
-                    <div class="education-content">
-                        <div class="content">
-                            <div class="year"><i class="fa-regular fa-calendar"></i>January 2025</div>
-                            <h3>IBM Full Stack Software Developer Professional Certificate</h3>
-                            <p>Comprehensive full-stack development training by IBM, including front-end and back-end technologies.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="education-content">
-                        <div class="content">
-                            <div class="year"><i class="fa-regular fa-calendar"></i>October 2024</div>
-                            <h3>Google Cybersecurity Professional Certificate</h3>
-                            <p>Prepare for a career as a cybersecurity analyst with a professional certificate from Google.</p>
-                        </div>
-                    </div>
-
-                    <div class="education-content">
-                        <div class="content">
-                            <div class="year"><i class="fa-regular fa-calendar"></i>April 2024</div>
-                            <h3>Amazon Web Services Cloud Practitioner Certificate</h3>
-                            <p>The AWS Certified Cloud Practitioner validates foundational, high-level understanding of AWS Cloud, services, and terminology.</p>
-                        </div>
-                    </div>
-
-                    <div class="education-content">
-                        <div class="content">
-                            <div class="year"><i class="fa-regular fa-calendar"></i>February 2024</div>
-                            <h3>Microsoft and LinkedIn</h3>
-                            <p>Career Essentials in Data Analysis by Microsoft and LinkedIn</p>
-                            <p>Career Essentials in Cybersecurity by Microsoft and LinkedIn</p>
-                        </div>
-                    </div>
+            <div class="hero-image">
+                <div class="image-container">
+                    <img src="images/background.png" alt="Kay Huynh" class="profile-image">
+                    <div class="glitch-overlay"></div>
                 </div>
-            </div>
-
-        </div>
-    </section>
-
-    
-    <!-- ----------skills---------- -->
-    <section class="skills" id="skills">
-        <h2 class="heading">My <span>Skills</span></h2>
-        <div class="skills-row">
-            <div class="scroll-prompt" id="scrollPrompt">Scroll down to see more skills...</div>
-            <div class="skills-column">
-                <h3 class="title">Programming Language</h3>
-                <div class="skills-box">
-                    <div class="skills-content">
-                        <div class="progress prog-assembly">
-                            <h3>Assembly <span>85%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                        
-                        <div class="progress prog-c">
-                            <h3>C <span>90%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-
-                        <div class="progress prog-cpp">
-                            <h3>C++ <span>100%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-java">
-                            <h3>Java <span>90%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-js">
-                            <h3>JavaScript <span>70%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-python">
-                            <h3>Python <span>80%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-
-                        <div class="progress prog-prolog">
-                            <h3>Prolog <span>80%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-
-                        <div class="progress prog-html">
-                            <h3>HTML <span>90%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="skills-column">
-                <h3 class="title">Operating Systems & Frameworks</h3>
-                <div class="skills-box">
-                    <div class="skills-content">
-                        <div class="progress prog-windows">
-                            <h3>Windows <span>100%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-linux">
-                            <h3>Linux <span>100%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-angular">
-                            <h3>Angular <span>85%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-dotnet">
-                            <h3>.Net <span>85%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-django">
-                            <h3>Django <span>80%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="skills-column">
-                <h3 class="title">Software Tools</h3>
-                <div class="skills-box">
-                    <div class="skills-content">
-                        <div class="progress prog-git">
-                            <h3>Git <span>100%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-pycharm">
-                            <h3>Pycharm <span>90%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-vscode">
-                            <h3>VS Code <span>100%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-vsstudio">
-                            <h3>VS Studio <span>100%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-eclipse">
-                            <h3>Eclipse <span>95%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-intellij">
-                            <h3>IntelliJ <span>85%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-anaconda">
-                            <h3>Anaconda <span>100%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    
-                        <div class="progress prog-offices">
-                            <h3>Microsoft Offices <span>100%</span></h3>
-                            <div class="bar"><span></span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-<!-- ----------services---------- -->
-<section class="services" id="services">
-    <h2 class="heading">My <span>Digital Footprint</span></h2>
-    <div class="services-container">
-        <div class="services-box">
-            <i class="fa-brands fa-wordpress"></i>
-            <h3>Cybersecurity Blog</h3>
-            <p>Welcome to my Cybersecurity Blog! As a passionate learner and practitioner in the field of cybersecurity, I've created this space to share my journey, insights, and lessons learned. Whether you're a fellow cybersecurity enthusiast or someone curious about the field, I hope you'll find these posts informative and engaging. Join me as we delve into the fascinating world of cybersecurity. Let's learn and grow together in creating a safer digital world!</p>
-            <a href="https://khoacyberguard.wordpress.com/" class="btn-box">Learn more </a>
-        </div>
-
-        <div class="services-box">
-            <i class="fa-brands fa-github"></i>
-            <h3>My Github</h3>
-            <p>Welcome to my GitHub page! Here, you’ll find a collection of projects that showcase my skills and interests in various programming languages and domains. </p>
-            <a href="https://github.com/khoahuynh0110"class="btn-box">Learn more</a>
-        </div>
-
-        <div class="services-box">
-            <i class="fa-solid fa-display"></i>
-            <h3>Leetcode</h3>
-            <p>Welcome to my LeetCode profile! Here, you’ll find a collection of my solutions to various coding challenges that I’ve tackled on LeetCode. These solutions span a wide range of difficulty levels and topics, reflecting my commitment to improving my problem-solving skills and knowledge of data structures and algorithms.</p>
-            <a href="https://leetcode.com/u/khoacyberguard/"class="btn-box">Learn more</a>
-        </div>
-    </div>
-</section>
-
-
-<!-- -------------------portfolio---------------- -->
-<section class="portfolio" id="portfolio">
-    <h2 class="heading">Latest <span>Project</span></h2>
-    <div class="portfolio-container">
-        <div class="portfolio-box">
-            <h4>Cybersecurity Intern- JPMorgan Chase</h4>
-            <img src="images/work-4.png" alt="">
-            <div class="portfolio-layer">
-                <p>This is a comprehensive cybersecurity project that involved analyzing financial transaction data to detect fraud, enhancing web application security, developing a machine learning model for email classification, and designing a system to enforce access control. This experience allowed me to apply my skills in data analysis, machine learning, and cybersecurity, while gaining valuable insights into real-world financial security challenges. </p>
-                <a href="https://github.com/khoahuynh0110/Forage-Cybersecurity-JP-Morgan-Chase-2024"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-
-        <div class="portfolio-box">
-            <h4>Tic-Tac-Toe Game</h4>
-            <img src="images/work-1.png" alt="">
-            <div class="portfolio-layer">
-                <p>This project is a classic Tic Tac Toe game coded in MISP. Players can input their moves and compete against a computer opponent. The game features a numbered board visualizer, real-time board updates, clear instructions and prompts, and multiple rounds with win, loss, or tie outcomes. This project showcases my skills in coding, UI design, and game logic.</p>
-                <a href="https://github.com/khoahuynh0110/TicTacToe"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
         
-        <div class="portfolio-box">
-            <h4>Process Interaction and CPU Simulation</h4>
-            <img src="images/work-2.png" alt="">
-            <div class="portfolio-layer">
-                <p>This project aims to enhance my understanding of key operating system concepts such as cycle instruction, memory, CPU operations, process forking, and inter-process communication via pipes. By simulating separate processes for the CPU and memory, the project provides a hands-on approach to observing how processes interact and coordinate through the CPU and memory. Despite its simplicity, the project effectively covers the fundamental systems within a processor, offering practical insights into how an operating system functions and manages multiple processes.</p>
-                <a href="https://github.com/khoahuynh0110/Multiple-Processes-and-IPC-CPU-and-Memory-"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-
-        <div class="portfolio-box">
-            <h4>Networks- Hangman-Multiplayer</h4>
-            <img src="images/work-3.png" alt="">
-            <div class="portfolio-layer">
-                <p>This program is a server-client application that simulates a hangman game using FIFOs (named pipes) for secure and managed communication. The server reads motivational quotes from a file and sends a random one to the client upon request. The client, through its own FIFO, communicates with the server to receive quotes. This pipeline-based approach ensures a secure exchange of data between the user and the client. </p></p>
-                <a href="https://github.com/khoahuynh0110/Networked-Multiplayer-Game-Implementation"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-
-        <div class="portfolio-box">
-            <h4>Binary-Search-Tree-Implementation</h4>
-            <img src="images/work-5.png" alt="">
-            <div class="portfolio-layer">
-                <p>This is a comprehensive cybersecurity project that involved analyzing financial transaction data to detect fraud, enhancing web application security, developing a machine learning model for email classification, and designing a system to enforce access control. This experience allowed me to apply my skills in data analysis, machine learning, and cybersecurity, while gaining valuable insights into real-world financial security challenges. </p>
-                <a href="https://github.com/khoahuynh0110/Binary-Search-Tree-Implementation"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-
-        <div class="portfolio-box">
-            <h4>Pipeline-Based Arithmetic Expression Evaluator</h4>
-            <img src="images/work-6.png" alt="">
-            <div class="portfolio-layer">
-                <p>Developed a versatile C program using a pipeline-based approach to evaluate arithmetic expressions, supporting operators (+), (-), (*), and (/). The program employs a multi-process architecture for enhanced efficiency and parallelism. Implemented file I/O operations to read expressions from external sources and display results on standard output, with efficient inter-process communication using pipes for seamless data transfer and result sharing.</p>
-                <a href="https://github.com/khoahuynh0110/Pipeline-Based-Arithmetic-Expression-Evaluator"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- ----------------------------Contact----------------- -->
-<section class="contact" id="contact">
-    <h2 class="heading">Let's <span>Connect!</span></h2>
-    <div class="container">
-        <div class="row">
-            <div class="contact-left">
-                <h1 class="sub-title">My Info:</h1>
-                <p><a href="mailto:kay.huynh0110@gmail.com" style="color:#FFC300;" > <i class="fa-solid fa-envelope"></i></a> kay.huynh0110@gmail.com</p>
-                <p><a href="tel:971-407-9309" style="color:#FFC300;" ><i class="fa-solid fa-phone"></i></a> 971-407-9309</p>
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/Anhhkhoa0110"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.instagram.com/anhh._khoa/"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/in/kayhuynh0110/"><i class="fa-brands fa-linkedin"></i></a>
+        <!-- Terminal moved below hero content -->
+        <div style="max-width: 1200px; margin: 4rem auto 0; padding: 0 2rem;">
+            <div class="terminal">
+                <div class="terminal-header">
+                    <div class="terminal-buttons">
+                        <div class="terminal-button btn-close"></div>
+                        <div class="terminal-button btn-minimize"></div>
+                        <div class="terminal-button btn-maximize"></div>
+                    </div>
+                    <div class="terminal-title">security_scan.py</div>
                 </div>
-                <a href="images/KayHuynh_Resume.pdf" download class="btn btn2">Download My Resume</a>
+                <div class="terminal-content" id="terminal-text">
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">kay@cyberguard:~$</span> python security_scan.py
+                    </div>
+                    <div class="terminal-line">Initializing security scan...</div>
+                    <div class="terminal-line">Loading encryption modules... ✓</div>
+                    <div class="terminal-line">Checking network vulnerabilities... ✓</div>
+                    <div class="terminal-line">Analyzing threat patterns... ✓</div>
+                    <div class="terminal-line">System Status: <span style="color: #39ff14;">SECURE</span></div>
+                    <div class="terminal-line">
+                        <span class="terminal-prompt">kay@cyberguard:~$</span> 
+                        <span class="cursor">_</span>
+                    </div>
+                </div>
             </div>
-            <div class="contact-right">
-                <form name="submit-to-google-sheet">
-                    <div class="input-box">
-                        <input type="text" name="Name" placeholder="Your Name" required>
-                        <input type="email" name="Email" placeholder="Your Email" required>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2 class="section-title">SYSTEM PROFILE</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="terminal" style="margin-bottom: 2rem;">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <div class="terminal-button btn-close"></div>
+                            <div class="terminal-button btn-minimize"></div>
+                            <div class="terminal-button btn-maximize"></div>
+                        </div>
+                        <div class="terminal-title">profile.json</div>
                     </div>
-                    <div class="input-box">
-                        <input type="number" name="Phone" placeholder="Your Phone Number">
-                        <input type="text" name="Subject" placeholder="Email Subject">
+                    <div class="terminal-content">
+                        <div class="terminal-line" style="color: var(--accent-cyan);">{</div>
+                        <div class="terminal-line">  "name": "Kay Huynh",</div>
+                        <div class="terminal-line">  "role": "Software Engineer | Cybersecurity",</div>
+                        <div class="terminal-line">  "company": "TickerTrends",</div>
+                        <div class="terminal-line">  "education": {</div>
+                        <div class="terminal-line">    "degree": "MS Computer Science",</div>
+                        <div class="terminal-line">    "university": "UT Austin",</div>
+                        <div class="terminal-line">    "gpa": "3.9"</div>
+                        <div class="terminal-line">  },</div>
+                        <div class="terminal-line">  "specializations": [</div>
+                        <div class="terminal-line">    "Full-Stack Development",</div>
+                        <div class="terminal-line">    "API Optimization",</div>
+                        <div class="terminal-line">    "Cybersecurity Hardening",</div>
+                        <div class="terminal-line">    "Cloud Architecture"</div>
+                        <div class="terminal-line">  ]</div>
+                        <div class="terminal-line" style="color: var(--accent-cyan);">}</div>
                     </div>
-                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
-                    <button type="submit" class="btn btn2">Submit</button>
-                </form>
-                <span id="msg"></span>
+                </div>
+            </div>
+            <div class="contact-form" style="background: transparent; border: none; padding: 1rem;">
+                <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', monospace; margin-bottom: 2rem;">Current Status</h3>
+                <div style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                    <p style="margin-bottom: 1.5rem;">
+                        🚀 <strong style="color: var(--accent-green);">Currently employed</strong> as a Software Engineer & Cybersecurity Specialist at TickerTrends, 
+                        where I optimize backend systems handling 10,000+ daily requests and implement enterprise-level security solutions.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        🎓 <strong style="color: var(--accent-purple);">Pursuing MS in Computer Science</strong> at UT Austin with a 3.9 GPA, 
+                        specializing in advanced algorithms, distributed systems, and AI/ML applications.
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        🔒 <strong style="color: var(--accent-cyan);">Certified professional</strong> with credentials from IBM, Google, AWS, and ISC2, 
+                        demonstrating expertise across the full technology stack from cloud infrastructure to cybersecurity.
+                    </p>
+                    <p>
+                        💡 <strong style="color: var(--accent-orange);">Proven track record</strong> of leading teams, optimizing performance 
+                        (40% API improvement), and implementing security measures that reduce threats by 95%.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section id="experience" class="section">
+        <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
+        <div class="experience-timeline">
+            <div class="experience-item">
+                <div class="experience-date">
+                    <span class="date-badge">CURRENT</span>
+                    <span class="date-range">March 2025 - Present</span>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Software Engineer | Cybersecurity</h3>
+                        <h4 class="experience-company">TickerTrends</h4>
+                    </div>
+                    <div class="experience-description">
+                        <div class="achievement-item">
+                            <i class="fas fa-rocket"></i>
+                            <span>Optimized backend API endpoints using Java, Node.js, Express, PostgreSQL, and AWS EC2, improving response time by <strong>40%</strong> and supporting <strong>10,000+ daily requests</strong></span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Upgraded Chrome Extension with JavaScript, React, and Google Trends API; integrated security controls reducing brute-force attempts by <strong>95%</strong></span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-lock"></i>
+                            <span>Hardened web assets with security headers, CSP policies, and HTTPS enforcement, cutting XSS and clickjacking risk by <strong>70%</strong> across all production endpoints</span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-database"></i>
+                            <span>Engineered financial KPI extraction pipeline using Python, OpenAI API, and FAISS, boosting data accuracy by <strong>40%</strong> across <strong>400+ companies</strong></span>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">AWS EC2</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-date">
+                    <span class="date-badge">LEADERSHIP</span>
+                    <span class="date-range">Sep 2024 - Dec 2024</span>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Team Leader | Senior Project</h3>
+                        <h4 class="experience-company">Caterpillar Inc.</h4>
+                    </div>
+                    <div class="experience-description">
+                        <div class="achievement-item">
+                            <i class="fas fa-users"></i>
+                            <span>Led 5-member senior project team developing web-based UI for CHP feasibility tool, cutting manual data entry by <strong>60%</strong> and increasing recommendation speed by <strong>30%</strong></span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-cogs"></i>
+                            <span>Built .NET backend services and Angular frontend with real-time EIA API integration managing <strong>250+ customer configurations</strong></span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-database"></i>
+                            <span>Architected MySQL database schemas for customer records, generator specifications, and power/thermal metrics with scalable storage</span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Integrated Utility Import Requirement (UIR) logic, minimizing configuration errors by <strong>40%</strong></span>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">Angular</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">EIA APIs</span>
+                        <span class="tech-tag">Team Leadership</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-date">
+                    <span class="date-badge">FINTECH</span>
+                    <span class="date-range">Sep 2024 - Dec 2024</span>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Technology Software Development Intern</h3>
+                        <h4 class="experience-company">Citigroup | Forage</h4>
+                    </div>
+                    <div class="experience-description">
+                        <div class="achievement-item">
+                            <i class="fas fa-sitemap"></i>
+                            <span>Created UML state diagram for Citi's loan system, improving workflow clarity and cutting onboarding time by <strong>15%</strong></span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-brain"></i>
+                            <span>Proposed credit risk modeling system using Python and .NET integration, boosting accuracy by <strong>20%</strong> and reducing bias</span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Built Java application with Yahoo Finance API and JavaFX visualization, reducing manual data work by <strong>30%</strong></span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-tools"></i>
+                            <span>Leveraged Gradle, OkHttp, and JUnit for build automation and testing, enhancing application reliability by <strong>30%</strong></span>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">JavaFX</span>
+                        <span class="tech-tag">Gradle</span>
+                        <span class="tech-tag">Yahoo Finance API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-date">
+                    <span class="date-badge">SECURITY</span>
+                    <span class="date-range">May 2024 - Aug 2024</span>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-header">
+                        <h3 class="experience-title">Cybersecurity Engineer Intern</h3>
+                        <h4 class="experience-company">JPMorgan Chase & Co | Forage</h4>
+                    </div>
+                    <div class="experience-description">
+                        <div class="achievement-item">
+                            <i class="fas fa-search"></i>
+                            <span>Analyzed <strong>10,000+ mobile money transactions</strong> for fraud detection using Pandas and Python, enhancing accuracy by <strong>25%</strong></span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-shield-halved"></i>
+                            <span>Implemented OWASP Top 10 security practices and Django best practices, addressing critical web vulnerabilities</span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-robot"></i>
+                            <span>Designed and trained ML model using scikit-learn for email spam classification, improving security by <strong>15%</strong></span>
+                        </div>
+                        <div class="achievement-item">
+                            <i class="fas fa-key"></i>
+                            <span>Integrated Django 2FA authentication and role management, decreasing unauthorized access incidents by <strong>20%</strong></span>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">scikit-learn</span>
+                        <span class="tech-tag">OWASP</span>
+                        <span class="tech-tag">Machine Learning</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2 class="section-title">TECHNICAL ARSENAL</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3 class="skill-title">Programming Languages</h3>
+                <div class="skill-item">
+                    <span>Java</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>JavaScript/TypeScript</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>Python</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>C/C++</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>SQL/MySQL</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-title">Frameworks & Backend</h3>
+                <div class="skill-item">
+                    <span>Node.js/Express</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>Spring/Spring Boot</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>.NET Framework</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>Django</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>React/Angular</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-title">Cloud & Security</h3>
+                <div class="skill-item">
+                    <span>AWS (EC2, APIs)</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>OWASP Top 10</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>API Security</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>PostgreSQL/Redis</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <span>Machine Learning</span>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <h2 class="section-title">PROFESSIONAL CERTIFICATIONS</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3 class="skill-title">Current Certifications</h3>
+                <div class="contact-item" style="background: rgba(0, 255, 255, 0.1); border-left: 3px solid var(--accent-green);">
+                    <i class="fas fa-certificate contact-icon" style="color: var(--accent-green);"></i>
+                    <div>
+                        <div style="color: var(--accent-green); font-weight: bold;">IBM Full Stack Software Developer</div>
+                        <div style="color: var(--text-secondary);">Professional Certificate • January 2025</div>
+                    </div>
+                </div>
+                <div class="contact-item" style="background: rgba(157, 78, 221, 0.1); border-left: 3px solid var(--accent-purple);">
+                    <i class="fas fa-shield-alt contact-icon" style="color: var(--accent-purple);"></i>
+                    <div>
+                        <div style="color: var(--accent-purple); font-weight: bold;">IBM & ISC2 Cybersecurity Specialist</div>
+                        <div style="color: var(--text-secondary);">Professional Certificate • November 2024</div>
+                    </div>
+                </div>
+                <div class="contact-item" style="background: rgba(0, 255, 255, 0.1); border-left: 3px solid var(--accent-cyan);">
+                    <i class="fas fa-cloud contact-icon" style="color: var(--accent-cyan);"></i>
+                    <div>
+                        <div style="color: var(--accent-cyan); font-weight: bold;">AWS Cloud Practitioner</div>
+                        <div style="color: var(--text-secondary);">Amazon Certified • April 2024</div>
+                    </div>
+                </div>
+                <div class="contact-item" style="background: rgba(57, 255, 20, 0.1); border-left: 3px solid var(--accent-green);">
+                    <i class="fas fa-lock contact-icon" style="color: var(--accent-green);"></i>
+                    <div>
+                        <div style="color: var(--accent-green); font-weight: bold;">Google Cybersecurity Professional</div>
+                        <div style="color: var(--text-secondary);">Google Certified • July 2024</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3 class="skill-title">Academic Excellence</h3>
+                <div class="contact-item" style="background: rgba(255, 215, 0, 0.1); border-left: 3px solid #FFD700;">
+                    <i class="fas fa-trophy contact-icon" style="color: #FFD700;"></i>
+                    <div>
+                        <div style="color: #FFD700; font-weight: bold;">Phi Theta Kappa Scholarship</div>
+                        <div style="color: var(--text-secondary);">Academic Excellence Honor Society</div>
+                    </div>
+                </div>
+                <div class="contact-item" style="background: rgba(255, 107, 53, 0.1); border-left: 3px solid var(--accent-orange);">
+                    <i class="fas fa-graduation-cap contact-icon" style="color: var(--accent-orange);"></i>
+                    <div>
+                        <div style="color: var(--accent-orange); font-weight: bold;">State Farm STEM Scholarship</div>
+                        <div style="color: var(--text-secondary);">STEM Excellence Recognition</div>
+                    </div>
+                </div>
+                <div class="contact-item" style="background: rgba(0, 255, 255, 0.1); border-left: 3px solid var(--accent-cyan);">
+                    <i class="fas fa-star contact-icon" style="color: var(--accent-cyan);"></i>
+                    <div>
+                        <div style="color: var(--accent-cyan); font-weight: bold;">MS Computer Science - GPA 3.9</div>
+                        <div style="color: var(--text-secondary);">University of Texas at Austin</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <h2 class="section-title">TECHNICAL PROJECTS</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Advanced CPU & Memory Simulation</h3>
+                    <div class="project-tech">C++ • Operating Systems • IPC • Fork() • Pipes</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        <strong>Multi-Process OS Simulation:</strong> Implemented advanced operating system concepts including 
+                        process forking, inter-process communication via pipes, interrupt handling with 3-signal system, 
+                        and secure memory management with user/kernel mode enforcement for system stability.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/kayhuynh0110/Multiple-Processes-and-IPC-CPU-and-Memory-" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://github.com/kayhuynh0110/Multiple-Processes-and-IPC-CPU-and-Memory-" class="project-link">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Networked Gaming Security Platform</h3>
+                    <div class="project-tech">C • Socket Programming • TCP/IP • FIFOs • Encryption</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        <strong>Secure Multiplayer System:</strong> Developed Hangman and Number Guessing games with 
+                        server-client architecture using FIFOs for managed communication. Implemented encryption, 
+                        data integrity validation, and real-time feedback systems for secure networked gaming.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/kayhuynh0110/Networked-Multiplayer-Game-Implementation" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://github.com/kayhuynh0110/Networked-Multiplayer-Game-Implementation" class="project-link">
+                            <i class="fas fa-gamepad"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">High-Performance Binary Search Tree</h3>
+                    <div class="project-tech">Java • Data Structures • Algorithms • Dynamic Memory</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        <strong>Advanced BST Implementation:</strong> Built optimized Binary Search Tree with efficient 
+                        insertion, deletion, and search operations. Features include tree traversal algorithms, 
+                        node counting, structure comparison, copy creation, mirror imaging, and tree rotations.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/kayhuynh0110/Binary-Search-Tree-Implementation" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://github.com/kayhuynh0110/Binary-Search-Tree-Implementation" class="project-link">
+                            <i class="fas fa-tree"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">MIPS Assembly Tic-Tac-Toe Game</h3>
+                    <div class="project-tech">MIPS Assembly • Low-Level Programming • Game Logic</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        <strong>Assembly Language Gaming:</strong> Classic Tic-Tac-Toe game coded entirely in MIPS assembly. 
+                        Features numbered board visualization, real-time updates, AI opponent, clear user prompts, 
+                        and multiple rounds with comprehensive win/loss/tie detection.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/kayhuynh0110/TicTacToe" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://github.com/kayhuynh0110/TicTacToe" class="project-link">
+                            <i class="fas fa-play"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Pipeline Arithmetic Expression Evaluator</h3>
+                    <div class="project-tech">C • Multi-Process Architecture • Pipes • File I/O</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        <strong>Parallel Processing System:</strong> Versatile C program using pipeline-based approach 
+                        for arithmetic evaluation (+, -, *, /). Multi-process architecture with efficient IPC via pipes, 
+                        file I/O operations, and optimized data transfer for enhanced performance.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://github.com/kayhuynh0110/Pipeline-Based-Arithmetic-Expression-Evaluator" class="project-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://github.com/kayhuynh0110/Pipeline-Based-Arithmetic-Expression-Evaluator" class="project-link">
+                            <i class="fas fa-calculator"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3 class="project-title">Cybersecurity Research & Analysis</h3>
+                    <div class="project-tech">Python • Machine Learning • Data Analysis • Security Research</div>
+                </div>
+                <div class="project-content">
+                    <p class="project-description">
+                        <strong>Security Research Blog:</strong> Comprehensive cybersecurity research platform covering 
+                        threat analysis, vulnerability assessments, and emerging security trends. Features technical 
+                        tutorials, industry insights, and practical security implementations for professional development.
+                    </p>
+                    <div class="project-links">
+                        <a href="https://khoacyberguard.wordpress.com/" class="project-link">
+                            <i class="fab fa-wordpress"></i>
+                        </a>
+                        <a href="https://khoacyberguard.wordpress.com/" class="project-link">
+                            <i class="fas fa-shield-alt"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2 class="section-title">ESTABLISH CONNECTION</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div>
+                        <div>Email</div>
+                        <div style="color: var(--text-secondary);">kay.huynh0110@gmail.com</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <div>
+                        <div>Phone</div>
+                        <div style="color: var(--text-secondary);">(971) 407-9309</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <div>
+                        <div>Location</div>
+                        <div style="color: var(--text-secondary);">Dallas, TX</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <div>
+                        <div>LinkedIn</div>
+                        <div style="color: var(--text-secondary);">linkedin.com/in/kayhuynh0110</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe contact-icon"></i>
+                    <div>
+                        <div>Portfolio</div>
+                        <div style="color: var(--text-secondary);">kayhuynh0110.github.io</div>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/kayhuynh0110" class="social-link">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kayhuynh0110/" class="social-link">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="http://kayhuynh0110.github.io/" class="social-link">
+                        <i class="fas fa-globe"></i>
+                    </a>
+                    <a href="https://khoacyberguard.wordpress.com/" class="social-link">
+                        <i class="fab fa-wordpress"></i>
+                    </a>
+                    <a href="https://leetcode.com/u/khoacyberguard/" class="social-link">
+                        <i class="fas fa-code"></i>
+                    </a>
+                </div>
+            </div>
+            <form class="contact-form">
+                <div class="form-group">
+                    <label class="form-label">Name</label>
+                    <input type="text" class="form-input" placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Email</label>
+                    <input type="email" class="form-input" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Subject</label>
+                    <input type="text" class="form-input" placeholder="Enter subject">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Message</label>
+                    <textarea class="form-textarea" rows="5" placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Resume Modal -->
+    <div id="resumeModal" class="resume-modal">
+        <div class="resume-modal-content">
+            <div class="resume-modal-header">
+                <h3 class="resume-modal-title">Kay Huynh - Resume</h3>
+                <button class="close-resume" onclick="closeResumeModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <iframe 
+                class="resume-viewer" 
+                src="images/KayHuynh_Resume.pdf"
+                type="application/pdf">
+                <p>Your browser does not support PDFs. 
+                   <a href="images/KayHuynh_Resume.pdf" download>Download the PDF</a>
+                </p>
+            </iframe>
+            <div class="resume-actions">
+                <a href="images/KayHuynh_Resume.pdf" download="Kay_Huynh_Resume.pdf" class="download-btn">
+                    <i class="fas fa-download"></i>
+                    Download PDF
+                </a>
             </div>
         </div>
     </div>
-</section>
 
-<footer class="footer">
-    <div class="copyright">
-        <p>Copyright © Khoa Huynh. This is my Portfolio <i class="fa-solid fa-shield-halved"></i></p>
-    </div>
-</footer>
+    <script>
+        // Resume Modal Functions
+        function openResumeModal() {
+            document.getElementById('resumeModal').classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
 
+        function closeResumeModal() {
+            document.getElementById('resumeModal').classList.remove('active');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
 
-<a href="#" class="scrollup" id="scroll-up">
-    <i class="fa-solid fa-arrow-up"></i>
-</a>
+        // Close modal when clicking outside the content
+        document.getElementById('resumeModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeResumeModal();
+            }
+        });
 
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeResumeModal();
+            }
+        });
 
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw8chHPiXhj7v8C8IdH6PbZA0iwb-46Zplqwe7bTT6cYV6SiVmZiW5cd4l8h7SLNhuF/exec'
-    const form = document.forms['submit-to-google-sheet']
-    const msg = document.getElementById("msg")
-    form.addEventListener('submit', e => {
-      e.preventDefault()
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response =>{
-            msg.innerHTML = "Submission Successfully!"
-            setTimeout(function(){
-                msg.innerHTML =""
-            },5000)
-            form.reset()
-        })
-        .catch(error => console.error('Error!', error.message))
-    })
-  </script>
+        // Matrix Rain Effect
+        function createMatrix() {
+            const container = document.getElementById('matrix');
+            const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
+            
+            for (let i = 0; i < 50; i++) {
+                const column = document.createElement('div');
+                column.className = 'matrix-column';
+                column.style.left = Math.random() * 100 + '%';
+                column.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                column.style.animationDelay = Math.random() * 2 + 's';
+                
+                let text = '';
+                for (let j = 0; j < 20; j++) {
+                    text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
+                }
+                column.innerHTML = text;
+                
+                container.appendChild(column);
+            }
+        }
 
-  <script src ="js/main.js"></script>
+        // Terminal Typing Effect
+        function typeWriter() {
+            const lines = [
+                'kay@cyberguard:~$ python security_scan.py',
+                'Initializing security scan...',
+                'Loading encryption modules... ✓',
+                'Checking network vulnerabilities... ✓', 
+                'Analyzing threat patterns... ✓',
+                'System Status: SECURE',
+                'kay@cyberguard:~$ _'
+            ];
+            
+            // Reset and start typing animation
+            const terminalContent = document.getElementById('terminal-text');
+            terminalContent.innerHTML = '';
+            
+            let lineIndex = 0;
+            function typeLine() {
+                if (lineIndex < lines.length) {
+                    const line = document.createElement('div');
+                    line.className = 'terminal-line';
+                    
+                    if (lineIndex === 0) {
+                        line.innerHTML = '<span class="terminal-prompt">kay@cyberguard:~$</span> python security_scan.py';
+                    } else if (lineIndex === 5) {
+                        line.innerHTML = 'System Status: <span style="color: #39ff14;">SECURE</span>';
+                    } else if (lineIndex === 6) {
+                        line.innerHTML = '<span class="terminal-prompt">kay@cyberguard:~$</span> <span class="cursor">_</span>';
+                    } else {
+                        line.textContent = lines[lineIndex];
+                    }
+                    
+                    terminalContent.appendChild(line);
+                    lineIndex++;
+                    setTimeout(typeLine, 800);
+                }
+            }
+            typeLine();
+        }
 
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize effects
+        document.addEventListener('DOMContentLoaded', function() {
+            createMatrix();
+            setTimeout(typeWriter, 1000);
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe sections for scroll animations
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>

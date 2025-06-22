@@ -31,7 +31,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: 
+            background:
                 radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 40% 80%, rgba(57, 255, 20, 0.02) 0%, transparent 50%);
@@ -138,7 +138,7 @@
 
         .experience-content:hover {
             transform: translateY(-8px);
-            box-shadow: 
+            box-shadow:
                 0 15px 40px rgba(0, 0, 0, 0.4),
                 0 0 30px rgba(0, 255, 255, 0.3);
             border-color: var(--accent-cyan);
@@ -625,7 +625,7 @@
             background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple), var(--accent-green), var(--accent-cyan));
             background-size: 400% 400%;
             animation: neonPulse 3s ease-in-out infinite;
-            box-shadow: 
+            box-shadow:
                 0 0 30px rgba(0, 255, 255, 0.5),
                 0 0 60px rgba(157, 78, 221, 0.3),
                 0 0 90px rgba(57, 255, 20, 0.2);
@@ -689,7 +689,7 @@
             right: 0;
             bottom: 0;
             border-radius: 20px;
-            background: 
+            background:
                 linear-gradient(90deg, transparent 0%, rgba(255, 0, 255, 0.03) 2%, transparent 4%),
                 linear-gradient(90deg, transparent 95%, rgba(0, 255, 255, 0.03) 97%, transparent 100%);
             animation: glitchOverlay 3s infinite;
@@ -700,14 +700,14 @@
         @keyframes neonPulse {
             0%, 100% {
                 background-position: 0% 50%;
-                box-shadow: 
+                box-shadow:
                     0 0 20px rgba(0, 255, 255, 0.5),
                     0 0 40px rgba(157, 78, 221, 0.3),
                     0 0 60px rgba(57, 255, 20, 0.2);
             }
             50% {
                 background-position: 100% 50%;
-                box-shadow: 
+                box-shadow:
                     0 0 30px rgba(0, 255, 255, 0.8),
                     0 0 60px rgba(157, 78, 221, 0.5),
                     0 0 90px rgba(57, 255, 20, 0.3);
@@ -751,8 +751,12 @@
         /* Sections */
         .section {
             padding: 5rem 2rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+        }
+
+        #about {
+            max-width: 1600px;
         }
 
         .section-title {
@@ -895,6 +899,353 @@
         .project-link:hover {
             color: var(--accent-purple);
             transform: scale(1.1);
+        }
+
+        /* Live Projects Grid */
+        .live-projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .live-project-card {
+            background: linear-gradient(145deg, rgba(17, 17, 24, 0.95), rgba(25, 25, 35, 0.95));
+            border: 2px solid rgba(57, 255, 20, 0.4);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .live-project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan), var(--accent-purple));
+            animation: liveBorderGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes liveBorderGlow {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        .live-project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(57, 255, 20, 0.2);
+            border-color: var(--accent-green);
+        }
+
+        .live-project-header {
+            padding: 2rem;
+            background: rgba(57, 255, 20, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.3);
+        }
+
+        .live-project-title {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-green);
+            font-size: 1.4rem;
+            margin: 0;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        .live-project-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.live {
+            background: var(--accent-green);
+            box-shadow: 0 0 10px var(--accent-green);
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .status-text {
+            font-family: 'Orbitron', monospace;
+            color: var(--accent-green);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+        }
+
+        .live-project-preview {
+            height: 200px;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid rgba(57, 255, 20, 0.2);
+        }
+
+        .demo-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+        }
+
+        .demo-placeholder i {
+            font-size: 3rem;
+            color: var(--accent-green);
+            opacity: 0.7;
+        }
+
+        .live-project-card:hover .demo-placeholder {
+            transform: scale(1.1);
+        }
+
+        .live-project-card:hover .demo-placeholder i {
+            opacity: 1;
+            color: var(--accent-cyan);
+        }
+
+        .live-project-content {
+            padding: 2rem;
+        }
+
+        .project-tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .live-project-description {
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .live-project-description strong {
+            color: var(--accent-green);
+            font-family: 'Orbitron', monospace;
+        }
+
+        .live-project-features {
+            margin-bottom: 2rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            background: rgba(57, 255, 20, 0.05);
+            border-radius: 0.5rem;
+            border-left: 3px solid var(--accent-green);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(57, 255, 20, 0.1);
+            transform: translateX(5px);
+        }
+
+        .feature-item i {
+            color: var(--accent-green);
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .feature-item span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .live-project-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .live-demo-btn {
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-cyan));
+            color: var(--primary-bg);
+            padding: 1rem 2rem;
+            border-radius: 0.8rem;
+            text-decoration: none;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .live-demo-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(57, 255, 20, 0.4);
+        }
+
+        .demo-video-btn {
+            background: transparent;
+            color: var(--accent-green);
+            padding: 1rem 2rem;
+            border: 2px solid var(--accent-green);
+            border-radius: 0.8rem;
+            font-family: 'Orbitron', monospace;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .demo-video-btn:hover {
+            background: var(--accent-green);
+            color: var(--primary-bg);
+            transform: translateY(-3px);
+        }
+
+        /* Combined Sections Layout */
+        .combined-sections {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .profile-section,
+        .live-projects-section {
+            background: rgba(17, 17, 24, 0.6);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            width: 100%;
+        }
+
+        .subsection-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.8rem;
+            color: var(--accent-cyan);
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 10px var(--accent-cyan);
+            border-bottom: 2px solid rgba(0, 255, 255, 0.3);
+            padding-bottom: 1rem;
+        }
+
+        .live-projects-section .live-projects-grid {
+            margin-top: 0;
+        }
+
+        .live-projects-section .live-project-card {
+            margin: 0 auto;
+            max-width: 1100px; /* MODIFIED: Increased width from 800px */
+        }
+
+        .live-projects-section .live-project-header {
+            padding: 2rem;
+        }
+
+        .live-projects-section .live-project-title {
+            font-size: 1.4rem;
+        }
+
+        .live-projects-section .live-project-preview {
+            height: 200px;
+        }
+
+        .live-projects-section .demo-placeholder {
+            gap: 1rem;
+        }
+
+        .live-projects-section .demo-placeholder i {
+            font-size: 3rem;
+        }
+
+        .live-projects-section .demo-placeholder span {
+            font-size: 1rem;
+        }
+
+        .live-projects-section .live-project-content {
+            padding: 2rem;
+        }
+
+        .live-projects-section .live-project-description {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .live-projects-section .feature-item {
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .live-projects-section .feature-item span {
+            font-size: 0.9rem;
+        }
+
+        .live-projects-section .live-demo-btn,
+        .live-projects-section .demo-video-btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+        }
+
+        /* Profile section optimizations */
+        .profile-section .terminal {
+            margin-bottom: 2rem;
+        }
+
+        .profile-section .terminal-content {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .profile-section .contact-form h3 {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-section .contact-form div {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .profile-section .contact-form p {
+            margin-bottom: 1.5rem !important;
+        }
+
+        /* Responsive design for combined sections */
+        @media (max-width: 1024px) {
+            .combined-sections {
+                gap: 3rem;
+            }
+
+            .profile-section,
+            .live-projects-section {
+                padding: 1.5rem;
+            }
         }
 
         /* Contact Section */
@@ -1075,6 +1426,19 @@
             .hero-title {
                 font-size: 2rem;
             }
+
+            .live-projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .live-project-actions {
+                flex-direction: column;
+            }
+
+            .live-demo-btn,
+            .demo-video-btn {
+                justify-content: center;
+            }
         }
 
         .glitch {
@@ -1139,7 +1503,7 @@
             max-width: 900px;
             height: 85%;
             position: relative;
-            box-shadow: 
+            box-shadow:
                 0 0 30px rgba(0, 255, 255, 0.5),
                 0 0 60px rgba(0, 255, 255, 0.2);
             animation: slideInUp 0.4s ease-out;
@@ -1233,10 +1597,8 @@
     </style>
 </head>
 <body>
-    <!-- Matrix Rain Background -->
     <div class="matrix-container" id="matrix"></div>
 
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <div class="logo">KAY.EXE</div>
@@ -1252,14 +1614,13 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-subtitle">$ whoami</div>
                 <h1 class="hero-title glitch">KAY HUYNH</h1>
                 <p class="hero-description">
-                    Current Software Engineer & Cybersecurity Specialist at TickerTrends. MS in Computer Science at UT Austin (GPA 3.9). 
+                    Current Software Engineer & Cybersecurity Specialist at TickerTrends. MS in Computer Science at UT Austin (GPA 3.9).
                     Expert in full-stack development, API optimization, and cybersecurity hardening with proven results in production environments.
                 </p>
                 <div class="cta-buttons">
@@ -1274,8 +1635,7 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Terminal moved below hero content -->
+
         <div style="max-width: 1200px; margin: 4rem auto 0; padding: 0 2rem;">
             <div class="terminal">
                 <div class="terminal-header">
@@ -1296,7 +1656,7 @@
                     <div class="terminal-line">Analyzing threat patterns... ✓</div>
                     <div class="terminal-line">System Status: <span style="color: #39ff14;">SECURE</span></div>
                     <div class="terminal-line">
-                        <span class="terminal-prompt">kay@cyberguard:~$</span> 
+                        <span class="terminal-prompt">kay@cyberguard:~$</span>
                         <span class="cursor">_</span>
                     </div>
                 </div>
@@ -1304,65 +1664,131 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="section">
-        <h2 class="section-title">SYSTEM PROFILE</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <div class="terminal" style="margin-bottom: 2rem;">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <div class="terminal-button btn-close"></div>
-                            <div class="terminal-button btn-minimize"></div>
-                            <div class="terminal-button btn-maximize"></div>
+        <h2 class="section-title">SYSTEM PROFILE & LIVE DEMOS</h2>
+        <div class="combined-sections">
+            <div class="profile-section">
+                <h3 class="subsection-title">SYSTEM PROFILE</h3>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="terminal" style="margin-bottom: 2rem;">
+                            <div class="terminal-header">
+                                <div class="terminal-buttons">
+                                    <div class="terminal-button btn-close"></div>
+                                    <div class="terminal-button btn-minimize"></div>
+                                    <div class="terminal-button btn-maximize"></div>
+                                </div>
+                                <div class="terminal-title">profile.json</div>
+                            </div>
+                            <div class="terminal-content">
+                                <div class="terminal-line" style="color: var(--accent-cyan);">{</div>
+                                <div class="terminal-line">  "name": "Kay Huynh",</div>
+                                <div class="terminal-line">  "role": "Software Engineer | Cybersecurity",</div>
+                                <div class="terminal-line">  "company": "TickerTrends",</div>
+                                <div class="terminal-line">  "education": {</div>
+                                <div class="terminal-line">    "degree": "MS Computer Science",</div>
+                                <div class="terminal-line">    "university": "UT Austin",</div>
+                                <div class="terminal-line">    "gpa": "3.9"</div>
+                                <div class="terminal-line">  },</div>
+                                <div class="terminal-line">  "specializations": [</div>
+                                <div class="terminal-line">    "Full-Stack Development",</div>
+                                <div class="terminal-line">    "API Optimization",</div>
+                                <div class="terminal-line">    "Cybersecurity Hardening",</div>
+                                <div class="terminal-line">    "Cloud Architecture"</div>
+                                <div class="terminal-line">  ]</div>
+                                <div class="terminal-line" style="color: var(--accent-cyan);">}</div>
+                            </div>
                         </div>
-                        <div class="terminal-title">profile.json</div>
                     </div>
-                    <div class="terminal-content">
-                        <div class="terminal-line" style="color: var(--accent-cyan);">{</div>
-                        <div class="terminal-line">  "name": "Kay Huynh",</div>
-                        <div class="terminal-line">  "role": "Software Engineer | Cybersecurity",</div>
-                        <div class="terminal-line">  "company": "TickerTrends",</div>
-                        <div class="terminal-line">  "education": {</div>
-                        <div class="terminal-line">    "degree": "MS Computer Science",</div>
-                        <div class="terminal-line">    "university": "UT Austin",</div>
-                        <div class="terminal-line">    "gpa": "3.9"</div>
-                        <div class="terminal-line">  },</div>
-                        <div class="terminal-line">  "specializations": [</div>
-                        <div class="terminal-line">    "Full-Stack Development",</div>
-                        <div class="terminal-line">    "API Optimization",</div>
-                        <div class="terminal-line">    "Cybersecurity Hardening",</div>
-                        <div class="terminal-line">    "Cloud Architecture"</div>
-                        <div class="terminal-line">  ]</div>
-                        <div class="terminal-line" style="color: var(--accent-cyan);">}</div>
+                    <div class="contact-form" style="background: transparent; border: none; padding: 1rem;">
+                        <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', monospace; margin-bottom: 2rem;">Current Status</h3>
+                        <div style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
+                            <p style="margin-bottom: 1.5rem;">
+                                🚀 <strong style="color: var(--accent-green);">Currently employed</strong> as a Software Engineer & Cybersecurity Specialist at TickerTrends,
+                                where I optimize backend systems handling 10,000+ daily requests and implement enterprise-level security solutions.
+                            </p>
+                            <p style="margin-bottom: 1.5rem;">
+                                🎓 <strong style="color: var(--accent-purple);">Pursuing MS in Computer Science</strong> at UT Austin with a 3.9 GPA,
+                                specializing in advanced algorithms, distributed systems, and AI/ML applications.
+                            </p>
+                            <p style="margin-bottom: 1.5rem;">
+                                🔒 <strong style="color: var(--accent-cyan);">Certified professional</strong> with credentials from IBM, Google, AWS, and ISC2,
+                                demonstrating expertise across the full technology stack from cloud infrastructure to cybersecurity.
+                            </p>
+                            <p>
+                                💡 <strong style="color: var(--accent-orange);">Proven track record</strong> of leading teams, optimizing performance
+                                (40% API improvement), and implementing security measures that reduce threats by 95%.
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="contact-form" style="background: transparent; border: none; padding: 1rem;">
-                <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', monospace; margin-bottom: 2rem;">Current Status</h3>
-                <div style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
-                    <p style="margin-bottom: 1.5rem;">
-                        🚀 <strong style="color: var(--accent-green);">Currently employed</strong> as a Software Engineer & Cybersecurity Specialist at TickerTrends, 
-                        where I optimize backend systems handling 10,000+ daily requests and implement enterprise-level security solutions.
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        🎓 <strong style="color: var(--accent-purple);">Pursuing MS in Computer Science</strong> at UT Austin with a 3.9 GPA, 
-                        specializing in advanced algorithms, distributed systems, and AI/ML applications.
-                    </p>
-                    <p style="margin-bottom: 1.5rem;">
-                        🔒 <strong style="color: var(--accent-cyan);">Certified professional</strong> with credentials from IBM, Google, AWS, and ISC2, 
-                        demonstrating expertise across the full technology stack from cloud infrastructure to cybersecurity.
-                    </p>
-                    <p>
-                        💡 <strong style="color: var(--accent-orange);">Proven track record</strong> of leading teams, optimizing performance 
-                        (40% API improvement), and implementing security measures that reduce threats by 95%.
-                    </p>
+
+            <div class="live-projects-section">
+                <h3 class="subsection-title">LIVE PROJECT DEMOS</h3>
+                <div class="live-projects-grid">
+                    <div class="live-project-card">
+                        <div class="live-project-header">
+                            <h3 class="live-project-title">Caterpillar CHP Feasibility Tool</h3>
+                            <div class="live-project-status">
+                                <span class="status-indicator live"></span>
+                                <span class="status-text">LIVE DEMO</span>
+                            </div>
+                        </div>
+                        <div class="live-project-preview">
+                            <div class="demo-placeholder">
+                                <i class="fas fa-play-circle"></i>
+                                <span>Demo Video Coming Soon</span>
+                            </div>
+                        </div>
+                        <div class="live-project-content">
+                            <div class="project-tech-tags">
+                                <span class="tech-tag">.NET</span>
+                                <span class="tech-tag">Angular</span>
+                                <span class="tech-tag">MySQL</span>
+                                <span class="tech-tag">EIA APIs</span>
+                                <span class="tech-tag">Enterprise</span>
+                            </div>
+                            <p class="live-project-description">
+                                <strong>Enterprise Energy Solutions Platform:</strong> Web application that enhances Caterpillar's CHP (Combined Heat & Power) feasibility analysis.
+                                Helps employees and dealers recommend optimal energy solutions by analyzing customer electric/thermal demands, system requirements, and baseline costs.
+                                Features multi-iteration optimization algorithms, PDF report generation, and enterprise-grade UI following Caterpillar's design standards.
+                            </p>
+                            <div class="live-project-features">
+                                <div class="feature-item">
+                                    <i class="fas fa-chart-line"></i>
+                                    <span>Multi-criteria optimization engine</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Professional PDF report generation</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>User-friendly interface for novice users</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Enterprise security & IT standards</span>
+                                </div>
+                            </div>
+                            <div class="live-project-actions">
+                                <a href="https://cat-gas-engine-chp.vercel.app/" target="_blank" class="live-demo-btn">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Launch Live Demo
+                                </a>
+                                <button class="demo-video-btn" onclick="playDemoVideo()">
+                                    <i class="fas fa-play"></i>
+                                    Watch Demo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Work Experience Section -->
     <section id="experience" class="section">
         <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
         <div class="experience-timeline">
@@ -1499,7 +1925,7 @@
                             <span>Analyzed <strong>10,000+ mobile money transactions</strong> for fraud detection using Pandas and Python, enhancing accuracy by <strong>25%</strong></span>
                         </div>
                         <div class="achievement-item">
-                            <i class="fas fa-shield-halved"></i>
+                            <i class="fas fa-shield-alt"></i>
                             <span>Implemented OWASP Top 10 security practices and Django best practices, addressing critical web vulnerabilities</span>
                         </div>
                         <div class="achievement-item">
@@ -1524,7 +1950,6 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
     <section id="skills" class="section">
         <h2 class="section-title">TECHNICAL ARSENAL</h2>
         <div class="skills-grid">
@@ -1632,7 +2057,6 @@
         </div>
     </section>
 
-    <!-- Certifications Section -->
     <section id="certifications" class="section">
         <h2 class="section-title">PROFESSIONAL CERTIFICATIONS</h2>
         <div class="skills-grid">
@@ -1695,7 +2119,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section id="projects" class="section">
         <h2 class="section-title">TECHNICAL PROJECTS</h2>
         <div class="projects-grid">
@@ -1706,8 +2129,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Multi-Process OS Simulation:</strong> Implemented advanced operating system concepts including 
-                        process forking, inter-process communication via pipes, interrupt handling with 3-signal system, 
+                        <strong>Multi-Process OS Simulation:</strong> Implemented advanced operating system concepts including
+                        process forking, inter-process communication via pipes, interrupt handling with 3-signal system,
                         and secure memory management with user/kernel mode enforcement for system stability.
                     </p>
                     <div class="project-links">
@@ -1728,8 +2151,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Secure Multiplayer System:</strong> Developed Hangman and Number Guessing games with 
-                        server-client architecture using FIFOs for managed communication. Implemented encryption, 
+                        <strong>Secure Multiplayer System:</strong> Developed Hangman and Number Guessing games with
+                        server-client architecture using FIFOs for managed communication. Implemented encryption,
                         data integrity validation, and real-time feedback systems for secure networked gaming.
                     </p>
                     <div class="project-links">
@@ -1750,8 +2173,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Advanced BST Implementation:</strong> Built optimized Binary Search Tree with efficient 
-                        insertion, deletion, and search operations. Features include tree traversal algorithms, 
+                        <strong>Advanced BST Implementation:</strong> Built optimized Binary Search Tree with efficient
+                        insertion, deletion, and search operations. Features include tree traversal algorithms,
                         node counting, structure comparison, copy creation, mirror imaging, and tree rotations.
                     </p>
                     <div class="project-links">
@@ -1772,8 +2195,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Assembly Language Gaming:</strong> Classic Tic-Tac-Toe game coded entirely in MIPS assembly. 
-                        Features numbered board visualization, real-time updates, AI opponent, clear user prompts, 
+                        <strong>Assembly Language Gaming:</strong> Classic Tic-Tac-Toe game coded entirely in MIPS assembly.
+                        Features numbered board visualization, real-time updates, AI opponent, clear user prompts,
                         and multiple rounds with comprehensive win/loss/tie detection.
                     </p>
                     <div class="project-links">
@@ -1794,8 +2217,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Parallel Processing System:</strong> Versatile C program using pipeline-based approach 
-                        for arithmetic evaluation (+, -, *, /). Multi-process architecture with efficient IPC via pipes, 
+                        <strong>Parallel Processing System:</strong> Versatile C program using pipeline-based approach
+                        for arithmetic evaluation (+, -, *, /). Multi-process architecture with efficient IPC via pipes,
                         file I/O operations, and optimized data transfer for enhanced performance.
                     </p>
                     <div class="project-links">
@@ -1816,8 +2239,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Security Research Blog:</strong> Comprehensive cybersecurity research platform covering 
-                        threat analysis, vulnerability assessments, and emerging security trends. Features technical 
+                        <strong>Security Research Blog:</strong> Comprehensive cybersecurity research platform covering
+                        threat analysis, vulnerability assessments, and emerging security trends. Features technical
                         tutorials, industry insights, and practical security implementations for professional development.
                     </p>
                     <div class="project-links">
@@ -1833,7 +2256,6 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
     <section id="contact" class="section">
         <h2 class="section-title">ESTABLISH CONNECTION</h2>
         <div class="contact-container">
@@ -1913,7 +2335,6 @@
         </div>
     </section>
 
-    <!-- Resume Modal -->
     <div id="resumeModal" class="resume-modal">
         <div class="resume-modal-content">
             <div class="resume-modal-header">
@@ -1922,11 +2343,11 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <iframe 
-                class="resume-viewer" 
+            <iframe
+                class="resume-viewer"
                 src="images/KayHuynh_Resume.pdf"
                 type="application/pdf">
-                <p>Your browser does not support PDFs. 
+                <p>Your browser does not support PDFs.
                    <a href="images/KayHuynh_Resume.pdf" download>Download the PDF</a>
                 </p>
             </iframe>
@@ -1965,24 +2386,29 @@
             }
         });
 
+        // Demo video function (placeholder for future implementation)
+        function playDemoVideo() {
+            alert('Demo video feature coming soon! For now, check out the live demo at the link above.');
+        }
+
         // Matrix Rain Effect
         function createMatrix() {
             const container = document.getElementById('matrix');
             const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-            
+
             for (let i = 0; i < 50; i++) {
                 const column = document.createElement('div');
                 column.className = 'matrix-column';
                 column.style.left = Math.random() * 100 + '%';
                 column.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 column.style.animationDelay = Math.random() * 2 + 's';
-                
+
                 let text = '';
                 for (let j = 0; j < 20; j++) {
                     text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
                 }
                 column.innerHTML = text;
-                
+
                 container.appendChild(column);
             }
         }
@@ -1993,22 +2419,22 @@
                 'kay@cyberguard:~$ python security_scan.py',
                 'Initializing security scan...',
                 'Loading encryption modules... ✓',
-                'Checking network vulnerabilities... ✓', 
+                'Checking network vulnerabilities... ✓',
                 'Analyzing threat patterns... ✓',
                 'System Status: SECURE',
                 'kay@cyberguard:~$ _'
             ];
-            
+
             // Reset and start typing animation
             const terminalContent = document.getElementById('terminal-text');
             terminalContent.innerHTML = '';
-            
+
             let lineIndex = 0;
             function typeLine() {
                 if (lineIndex < lines.length) {
                     const line = document.createElement('div');
                     line.className = 'terminal-line';
-                    
+
                     if (lineIndex === 0) {
                         line.innerHTML = '<span class="terminal-prompt">kay@cyberguard:~$</span> python security_scan.py';
                     } else if (lineIndex === 5) {
@@ -2018,7 +2444,7 @@
                     } else {
                         line.textContent = lines[lineIndex];
                     }
-                    
+
                     terminalContent.appendChild(line);
                     lineIndex++;
                     setTimeout(typeLine, 800);

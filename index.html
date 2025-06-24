@@ -31,7 +31,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background:
+            background: 
                 radial-gradient(circle at 20% 30%, rgba(0, 255, 255, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, rgba(157, 78, 221, 0.03) 0%, transparent 50%),
                 radial-gradient(circle at 40% 80%, rgba(57, 255, 20, 0.02) 0%, transparent 50%);
@@ -138,7 +138,7 @@
 
         .experience-content:hover {
             transform: translateY(-8px);
-            box-shadow:
+            box-shadow: 
                 0 15px 40px rgba(0, 0, 0, 0.4),
                 0 0 30px rgba(0, 255, 255, 0.3);
             border-color: var(--accent-cyan);
@@ -625,7 +625,7 @@
             background: linear-gradient(45deg, var(--accent-cyan), var(--accent-purple), var(--accent-green), var(--accent-cyan));
             background-size: 400% 400%;
             animation: neonPulse 3s ease-in-out infinite;
-            box-shadow:
+            box-shadow: 
                 0 0 30px rgba(0, 255, 255, 0.5),
                 0 0 60px rgba(157, 78, 221, 0.3),
                 0 0 90px rgba(57, 255, 20, 0.2);
@@ -689,7 +689,7 @@
             right: 0;
             bottom: 0;
             border-radius: 20px;
-            background:
+            background: 
                 linear-gradient(90deg, transparent 0%, rgba(255, 0, 255, 0.03) 2%, transparent 4%),
                 linear-gradient(90deg, transparent 95%, rgba(0, 255, 255, 0.03) 97%, transparent 100%);
             animation: glitchOverlay 3s infinite;
@@ -700,14 +700,14 @@
         @keyframes neonPulse {
             0%, 100% {
                 background-position: 0% 50%;
-                box-shadow:
+                box-shadow: 
                     0 0 20px rgba(0, 255, 255, 0.5),
                     0 0 40px rgba(157, 78, 221, 0.3),
                     0 0 60px rgba(57, 255, 20, 0.2);
             }
             50% {
                 background-position: 100% 50%;
-                box-shadow:
+                box-shadow: 
                     0 0 30px rgba(0, 255, 255, 0.8),
                     0 0 60px rgba(157, 78, 221, 0.5),
                     0 0 90px rgba(57, 255, 20, 0.3);
@@ -1006,12 +1006,26 @@
             gap: 1rem;
             color: var(--text-secondary);
             transition: all 0.3s ease;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .demo-placeholder:hover {
+            transform: scale(1.1);
+            color: var(--accent-green);
         }
 
         .demo-placeholder i {
             font-size: 3rem;
             color: var(--accent-green);
             opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .demo-placeholder:hover i {
+            opacity: 1;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 15px var(--accent-cyan);
         }
 
         .live-project-card:hover .demo-placeholder {
@@ -1160,8 +1174,9 @@
         }
 
         .live-projects-section .live-project-card {
+            margin: 0;
+            max-width: 800px;
             margin: 0 auto;
-            max-width: 1100px; /* MODIFIED: Increased width from 800px */
         }
 
         .live-projects-section .live-project-header {
@@ -1174,6 +1189,13 @@
 
         .live-projects-section .live-project-preview {
             height: 200px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .live-projects-section .live-project-preview:hover {
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--accent-green);
         }
 
         .live-projects-section .demo-placeholder {
@@ -1241,7 +1263,7 @@
             .combined-sections {
                 gap: 3rem;
             }
-
+            
             .profile-section,
             .live-projects-section {
                 padding: 1.5rem;
@@ -1441,6 +1463,34 @@
             }
         }
 
+        /* Video Modal Responsive */
+        @media (max-width: 768px) {
+            .video-modal-content {
+                width: 95%;
+                height: 70%;
+                max-height: 400px;
+            }
+
+            .video-modal-title {
+                font-size: 1.2rem;
+            }
+
+            .video-modal-header {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-modal-content {
+                height: 60%;
+                max-height: 300px;
+            }
+
+            .video-modal-title {
+                font-size: 1rem;
+            }
+        }
+
         .glitch {
             position: relative;
             animation: glitch 2s infinite;
@@ -1503,7 +1553,7 @@
             max-width: 900px;
             height: 85%;
             position: relative;
-            box-shadow:
+            box-shadow: 
                 0 0 30px rgba(0, 255, 255, 0.5),
                 0 0 60px rgba(0, 255, 255, 0.2);
             animation: slideInUp 0.4s ease-out;
@@ -1594,11 +1644,93 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(57, 255, 20, 0.4);
         }
+
+        /* Video Modal */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 10000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .video-modal.active {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        .video-modal-content {
+            background: rgba(17, 17, 24, 0.98);
+            border: 2px solid var(--accent-green);
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 1000px;
+            height: 80%;
+            max-height: 600px;
+            position: relative;
+            box-shadow: 
+                0 0 30px rgba(57, 255, 20, 0.5),
+                0 0 60px rgba(57, 255, 20, 0.2);
+            animation: slideInUp 0.4s ease-out;
+        }
+
+        .video-modal-header {
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-cyan));
+            padding: 1.5rem;
+            border-radius: 1rem 1rem 0 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .video-modal-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-bg);
+            margin: 0;
+        }
+
+        .close-video {
+            background: none;
+            border: none;
+            color: var(--primary-bg);
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-video:hover {
+            background: rgba(0, 0, 0, 0.2);
+            transform: rotate(90deg);
+        }
+
+        .video-viewer {
+            width: 100%;
+            height: calc(100% - 80px);
+            border: none;
+            border-radius: 0 0 1rem 1rem;
+        }
     </style>
 </head>
 <body>
+    <!-- Matrix Rain Background -->
     <div class="matrix-container" id="matrix"></div>
 
+    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
             <div class="logo">KAY.EXE</div>
@@ -1614,13 +1746,14 @@
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-subtitle">$ whoami</div>
                 <h1 class="hero-title glitch">KAY HUYNH</h1>
                 <p class="hero-description">
-                    Current Software Engineer & Cybersecurity Specialist at TickerTrends. MS in Computer Science at UT Austin (GPA 3.9).
+                    Current Software Engineer & Cybersecurity Specialist at TickerTrends. MS in Computer Science at UT Austin (GPA 3.9). 
                     Expert in full-stack development, API optimization, and cybersecurity hardening with proven results in production environments.
                 </p>
                 <div class="cta-buttons">
@@ -1635,7 +1768,8 @@
                 </div>
             </div>
         </div>
-
+        
+        <!-- Terminal moved below hero content -->
         <div style="max-width: 1200px; margin: 4rem auto 0; padding: 0 2rem;">
             <div class="terminal">
                 <div class="terminal-header">
@@ -1656,7 +1790,7 @@
                     <div class="terminal-line">Analyzing threat patterns... ✓</div>
                     <div class="terminal-line">System Status: <span style="color: #39ff14;">SECURE</span></div>
                     <div class="terminal-line">
-                        <span class="terminal-prompt">kay@cyberguard:~$</span>
+                        <span class="terminal-prompt">kay@cyberguard:~$</span> 
                         <span class="cursor">_</span>
                     </div>
                 </div>
@@ -1664,9 +1798,11 @@
         </div>
     </section>
 
+    <!-- About & Live Projects Combined Section -->
     <section id="about" class="section">
         <h2 class="section-title">SYSTEM PROFILE & LIVE DEMOS</h2>
         <div class="combined-sections">
+            <!-- System Profile -->
             <div class="profile-section">
                 <h3 class="subsection-title">SYSTEM PROFILE</h3>
                 <div class="contact-container">
@@ -1704,19 +1840,19 @@
                         <h3 style="color: var(--accent-cyan); font-family: 'Orbitron', monospace; margin-bottom: 2rem;">Current Status</h3>
                         <div style="color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem;">
                             <p style="margin-bottom: 1.5rem;">
-                                🚀 <strong style="color: var(--accent-green);">Currently employed</strong> as a Software Engineer & Cybersecurity Specialist at TickerTrends,
+                                🚀 <strong style="color: var(--accent-green);">Currently employed</strong> as a Software Engineer & Cybersecurity Specialist at TickerTrends, 
                                 where I optimize backend systems handling 10,000+ daily requests and implement enterprise-level security solutions.
                             </p>
                             <p style="margin-bottom: 1.5rem;">
-                                🎓 <strong style="color: var(--accent-purple);">Pursuing MS in Computer Science</strong> at UT Austin with a 3.9 GPA,
+                                🎓 <strong style="color: var(--accent-purple);">Pursuing MS in Computer Science</strong> at UT Austin with a 3.9 GPA, 
                                 specializing in advanced algorithms, distributed systems, and AI/ML applications.
                             </p>
                             <p style="margin-bottom: 1.5rem;">
-                                🔒 <strong style="color: var(--accent-cyan);">Certified professional</strong> with credentials from IBM, Google, AWS, and ISC2,
+                                🔒 <strong style="color: var(--accent-cyan);">Certified professional</strong> with credentials from IBM, Google, AWS, and ISC2, 
                                 demonstrating expertise across the full technology stack from cloud infrastructure to cybersecurity.
                             </p>
                             <p>
-                                💡 <strong style="color: var(--accent-orange);">Proven track record</strong> of leading teams, optimizing performance
+                                💡 <strong style="color: var(--accent-orange);">Proven track record</strong> of leading teams, optimizing performance 
                                 (40% API improvement), and implementing security measures that reduce threats by 95%.
                             </p>
                         </div>
@@ -1724,6 +1860,7 @@
                 </div>
             </div>
 
+            <!-- Live Projects -->
             <div class="live-projects-section">
                 <h3 class="subsection-title">LIVE PROJECT DEMOS</h3>
                 <div class="live-projects-grid">
@@ -1736,9 +1873,9 @@
                             </div>
                         </div>
                         <div class="live-project-preview">
-                            <div class="demo-placeholder">
+                            <div class="demo-placeholder" onclick="playDemoVideo()">
                                 <i class="fas fa-play-circle"></i>
-                                <span>Demo Video Coming Soon</span>
+                                <span>Click to Watch Demo Video</span>
                             </div>
                         </div>
                         <div class="live-project-content">
@@ -1750,8 +1887,8 @@
                                 <span class="tech-tag">Enterprise</span>
                             </div>
                             <p class="live-project-description">
-                                <strong>Enterprise Energy Solutions Platform:</strong> Web application that enhances Caterpillar's CHP (Combined Heat & Power) feasibility analysis.
-                                Helps employees and dealers recommend optimal energy solutions by analyzing customer electric/thermal demands, system requirements, and baseline costs.
+                                <strong>Enterprise Energy Solutions Platform:</strong> Web application that enhances Caterpillar's CHP (Combined Heat & Power) feasibility analysis. 
+                                Helps employees and dealers recommend optimal energy solutions by analyzing customer electric/thermal demands, system requirements, and baseline costs. 
                                 Features multi-iteration optimization algorithms, PDF report generation, and enterprise-grade UI following Caterpillar's design standards.
                             </p>
                             <div class="live-project-features">
@@ -1773,7 +1910,7 @@
                                 </div>
                             </div>
                             <div class="live-project-actions">
-                                <a href="https://cat-gas-engine-chp-tool.vercel.app/" target="_blank" class="live-demo-btn">
+                                <a href="https://cat-gas-engine-chp.vercel.app/" target="_blank" class="live-demo-btn">
                                     <i class="fas fa-external-link-alt"></i>
                                     Launch Live Demo
                                 </a>
@@ -1789,6 +1926,7 @@
         </div>
     </section>
 
+    <!-- Work Experience Section -->
     <section id="experience" class="section">
         <h2 class="section-title">PROFESSIONAL EXPERIENCE</h2>
         <div class="experience-timeline">
@@ -1950,6 +2088,7 @@
         </div>
     </section>
 
+    <!-- Skills Section -->
     <section id="skills" class="section">
         <h2 class="section-title">TECHNICAL ARSENAL</h2>
         <div class="skills-grid">
@@ -2057,6 +2196,7 @@
         </div>
     </section>
 
+    <!-- Certifications Section -->
     <section id="certifications" class="section">
         <h2 class="section-title">PROFESSIONAL CERTIFICATIONS</h2>
         <div class="skills-grid">
@@ -2119,6 +2259,7 @@
         </div>
     </section>
 
+    <!-- Projects Section -->
     <section id="projects" class="section">
         <h2 class="section-title">TECHNICAL PROJECTS</h2>
         <div class="projects-grid">
@@ -2129,8 +2270,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Multi-Process OS Simulation:</strong> Implemented advanced operating system concepts including
-                        process forking, inter-process communication via pipes, interrupt handling with 3-signal system,
+                        <strong>Multi-Process OS Simulation:</strong> Implemented advanced operating system concepts including 
+                        process forking, inter-process communication via pipes, interrupt handling with 3-signal system, 
                         and secure memory management with user/kernel mode enforcement for system stability.
                     </p>
                     <div class="project-links">
@@ -2151,8 +2292,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Secure Multiplayer System:</strong> Developed Hangman and Number Guessing games with
-                        server-client architecture using FIFOs for managed communication. Implemented encryption,
+                        <strong>Secure Multiplayer System:</strong> Developed Hangman and Number Guessing games with 
+                        server-client architecture using FIFOs for managed communication. Implemented encryption, 
                         data integrity validation, and real-time feedback systems for secure networked gaming.
                     </p>
                     <div class="project-links">
@@ -2173,8 +2314,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Advanced BST Implementation:</strong> Built optimized Binary Search Tree with efficient
-                        insertion, deletion, and search operations. Features include tree traversal algorithms,
+                        <strong>Advanced BST Implementation:</strong> Built optimized Binary Search Tree with efficient 
+                        insertion, deletion, and search operations. Features include tree traversal algorithms, 
                         node counting, structure comparison, copy creation, mirror imaging, and tree rotations.
                     </p>
                     <div class="project-links">
@@ -2195,8 +2336,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Assembly Language Gaming:</strong> Classic Tic-Tac-Toe game coded entirely in MIPS assembly.
-                        Features numbered board visualization, real-time updates, AI opponent, clear user prompts,
+                        <strong>Assembly Language Gaming:</strong> Classic Tic-Tac-Toe game coded entirely in MIPS assembly. 
+                        Features numbered board visualization, real-time updates, AI opponent, clear user prompts, 
                         and multiple rounds with comprehensive win/loss/tie detection.
                     </p>
                     <div class="project-links">
@@ -2217,8 +2358,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Parallel Processing System:</strong> Versatile C program using pipeline-based approach
-                        for arithmetic evaluation (+, -, *, /). Multi-process architecture with efficient IPC via pipes,
+                        <strong>Parallel Processing System:</strong> Versatile C program using pipeline-based approach 
+                        for arithmetic evaluation (+, -, *, /). Multi-process architecture with efficient IPC via pipes, 
                         file I/O operations, and optimized data transfer for enhanced performance.
                     </p>
                     <div class="project-links">
@@ -2239,8 +2380,8 @@
                 </div>
                 <div class="project-content">
                     <p class="project-description">
-                        <strong>Security Research Blog:</strong> Comprehensive cybersecurity research platform covering
-                        threat analysis, vulnerability assessments, and emerging security trends. Features technical
+                        <strong>Security Research Blog:</strong> Comprehensive cybersecurity research platform covering 
+                        threat analysis, vulnerability assessments, and emerging security trends. Features technical 
                         tutorials, industry insights, and practical security implementations for professional development.
                     </p>
                     <div class="project-links">
@@ -2256,6 +2397,7 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
     <section id="contact" class="section">
         <h2 class="section-title">ESTABLISH CONNECTION</h2>
         <div class="contact-container">
@@ -2335,6 +2477,7 @@
         </div>
     </section>
 
+    <!-- Resume Modal -->
     <div id="resumeModal" class="resume-modal">
         <div class="resume-modal-content">
             <div class="resume-modal-header">
@@ -2343,11 +2486,11 @@
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <iframe
-                class="resume-viewer"
+            <iframe 
+                class="resume-viewer" 
                 src="images/KayHuynh_Resume.pdf"
                 type="application/pdf">
-                <p>Your browser does not support PDFs.
+                <p>Your browser does not support PDFs. 
                    <a href="images/KayHuynh_Resume.pdf" download>Download the PDF</a>
                 </p>
             </iframe>
@@ -2357,6 +2500,26 @@
                     Download PDF
                 </a>
             </div>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3 class="video-modal-title">Caterpillar CHP Tool - Demo Video</h3>
+                <button class="close-video" onclick="closeVideoModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <iframe 
+                id="videoFrame"
+                class="video-viewer" 
+                src=""
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
         </div>
     </div>
 
@@ -2386,29 +2549,52 @@
             }
         });
 
-        // Demo video function (placeholder for future implementation)
+        // Demo video function
         function playDemoVideo() {
-            alert('Demo video feature coming soon! For now, check out the live demo at the link above.');
+            const videoModal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            
+            // Convert YouTube URL to embed format
+            videoFrame.src = 'https://www.youtube.com/embed/terbs54Gak8?autoplay=1';
+            
+            videoModal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
+
+        function closeVideoModal() {
+            const videoModal = document.getElementById('videoModal');
+            const videoFrame = document.getElementById('videoFrame');
+            
+            videoModal.classList.remove('active');
+            videoFrame.src = ''; // Stop video playback
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        // Close video modal when clicking outside the content
+        document.getElementById('videoModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeVideoModal();
+            }
+        });
 
         // Matrix Rain Effect
         function createMatrix() {
             const container = document.getElementById('matrix');
             const chars = '01アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン';
-
+            
             for (let i = 0; i < 50; i++) {
                 const column = document.createElement('div');
                 column.className = 'matrix-column';
                 column.style.left = Math.random() * 100 + '%';
                 column.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 column.style.animationDelay = Math.random() * 2 + 's';
-
+                
                 let text = '';
                 for (let j = 0; j < 20; j++) {
                     text += chars[Math.floor(Math.random() * chars.length)] + '<br>';
                 }
                 column.innerHTML = text;
-
+                
                 container.appendChild(column);
             }
         }
@@ -2419,22 +2605,22 @@
                 'kay@cyberguard:~$ python security_scan.py',
                 'Initializing security scan...',
                 'Loading encryption modules... ✓',
-                'Checking network vulnerabilities... ✓',
+                'Checking network vulnerabilities... ✓', 
                 'Analyzing threat patterns... ✓',
                 'System Status: SECURE',
                 'kay@cyberguard:~$ _'
             ];
-
+            
             // Reset and start typing animation
             const terminalContent = document.getElementById('terminal-text');
             terminalContent.innerHTML = '';
-
+            
             let lineIndex = 0;
             function typeLine() {
                 if (lineIndex < lines.length) {
                     const line = document.createElement('div');
                     line.className = 'terminal-line';
-
+                    
                     if (lineIndex === 0) {
                         line.innerHTML = '<span class="terminal-prompt">kay@cyberguard:~$</span> python security_scan.py';
                     } else if (lineIndex === 5) {
@@ -2444,7 +2630,7 @@
                     } else {
                         line.textContent = lines[lineIndex];
                     }
-
+                    
                     terminalContent.appendChild(line);
                     lineIndex++;
                     setTimeout(typeLine, 800);
